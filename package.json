@@ -1,5 +1,5 @@
 {
-  "name": "my-shop",
+  "name": "shoeson",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Artur0705/My-Shop.git"
+    "url": "git+https://github.com/Artur0705/ShoesOn.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Artur0705/My-Shop/issues"
+    "url": "https://github.com/Artur0705/ShoesOn/issues"
   },
-  "homepage": "https://github.com/Artur0705/My-Shop#readme",
+  "homepage": "https://github.com/Artur0705/ShoesOn#readme",
   "devDependencies": {
     "concurrently": "^5.1.0"
   }
