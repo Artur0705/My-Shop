@@ -11,6 +11,10 @@ import { Box, Flex, useDisclosure } from "@chakra-ui/react";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import ContactUs from "./components/ContactUs";
+import Services from "./components/Services";
+import AboutUs from "./components/AboutUs";
+import Testimonials from "./components/Testimonials";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -45,7 +49,11 @@ function App() {
         <Hero />
         <Hero />
       </Flex>
+      <AboutUs />
+      <Services />
+      <Testimonials />
       <ContactUs />
+      <Footer />
     </Box>
   );
 }
