@@ -1,11 +1,13 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/shoeson", {
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/ShoesOn",
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-  })
-  .catch((error) => console.log(error.reason));
+    useFindAndModify: false,
+  }
+);
 
-export default mongoose;
+module.exports = mongoose.connection;

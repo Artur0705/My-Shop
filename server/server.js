@@ -1,13 +1,12 @@
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import bodyParser from "body-parser";
-import userRoute from "./routes/userRoute.js";
-import productRoute from "./routes/productRoute.js";
-import orderRoute from "./routes/orderRoute.js";
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+const db = require("./config/connection.js");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const userRoute = require("./routes/userRoute.js");
+const productRoute = require("./routes/productRoute.js");
+const orderRoute = require("./routes/orderRoute.js");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +23,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../client/build/index.html`));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started at http://localhost:${PORT}`);
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`🌍 Now listening on localhost:${PORT}`);
+  });
 });
