@@ -12,7 +12,7 @@ function HomePage(props) {
   const params = useParams();
   const category = params.id ? params.id : "";
   const productList = useSelector((state) => state.productList);
-  const { products, loading, error } = productList;
+  const { products, loading, error } = productList || {};
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts(category));
@@ -85,7 +85,7 @@ function HomePage(props) {
             flexWrap="wrap"
             flexDirection={"row"}
           >
-            {products.map((product) => (
+            {products?.map((product) => (
               <>
                 <>
                   <Flex

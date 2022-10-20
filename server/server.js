@@ -3,6 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import userRoute from "./routes/userRoute.js";
+import productRoute from "./routes/productRoute.js";
+import orderRoute from "./routes/orderRoute.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
