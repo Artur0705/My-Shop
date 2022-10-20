@@ -16,7 +16,7 @@ import AboutUs from "./components/AboutUs";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
-import SigninPage from "./pages/SigninPage";
+import SigninPage from "./pages/SigninPage.js";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
@@ -32,7 +32,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/">
         <Route path="/" element={<HomePage />}></Route>,
-        <Route path="login" element={<SigninPage />}></Route>,
+        <Route path="login" element={<SigninPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>,
         <Route path="profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
