@@ -1,6 +1,8 @@
 # Name: Artur Aleksanyan
 
-# Project: Online Portal for selling .
+# Project: Online Portal for selling shoes.
+
+## Project Name: ShoesOn
 
 ## MVP Features:
 
