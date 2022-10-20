@@ -20,11 +20,12 @@ import SigninPage from "./pages/SigninPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
+import DrawerComponent from "./components/DrawerComponent";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  const { onOpen } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
   const router = createBrowserRouter(
@@ -53,6 +54,8 @@ function App() {
       <Services />
       <Testimonials />
       <ContactUs />
+      <DrawerComponent isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
+
       <Footer />
     </Box>
   );
