@@ -8,6 +8,23 @@ import {
   userUpdateReducer,
 } from "./reducers/userReducers";
 
+import {
+  productListReducer,
+  productDetailsReducer,
+  productSaveReducer,
+  productDeleteReducer,
+  productReviewSaveReducer,
+} from "./reducers/productReducers";
+
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  myOrderListReducer,
+  orderListReducer,
+  orderDeleteReducer,
+} from "./reducers/orderReducers";
+
 const userInfo = Cookie.get("userInfo") || null;
 
 const initialState = {
@@ -17,6 +34,17 @@ const reducer = combineReducers({
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
   userUpdate: userUpdateReducer,
+  productList: productListReducer,
+  productDetails: productDetailsReducer,
+  productSave: productSaveReducer,
+  productDelete: productDeleteReducer,
+  productReviewSave: productReviewSaveReducer,
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  myOrderList: myOrderListReducer,
+  orderList: orderListReducer,
+  orderDelete: orderDeleteReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
