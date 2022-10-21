@@ -25,11 +25,16 @@ import {
   orderDeleteReducer,
 } from "./reducers/orderReducers";
 
+import { cartReducer } from "./reducers/cartReducers";
+
+const cartItems = Cookie.get("cartItems") || [];
 const userInfo = Cookie.get("userInfo") || null;
 
 const initialState = {
+  cart: { cartItems, shipping: {}, payment: {} },
   userSignin: { userInfo: JSON.parse(userInfo) },
 };
+
 const reducer = combineReducers({
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
@@ -45,7 +50,9 @@ const reducer = combineReducers({
   myOrderList: myOrderListReducer,
   orderList: orderListReducer,
   orderDelete: orderDeleteReducer,
+  cart: cartReducer,
 });
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
