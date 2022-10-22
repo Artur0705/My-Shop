@@ -1,6 +1,6 @@
 const express = require("express");
-const Order = require("../models/orderModel.js");
-const { isAuth, isAdmin } = require("../utils/auth.js");
+const Order = require("../../models/orderModel.js");
+const { isAuth, isAdmin } = require("../../utils/auth.js");
 
 const router = express.Router();
 

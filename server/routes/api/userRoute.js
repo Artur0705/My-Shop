@@ -1,6 +1,6 @@
 const express = require("express");
-const User = require("../models/userModel.js");
-const { getToken, isAuth } = require("../utils/auth.js");
+const User = require("../../models/userModel");
+const { getToken, isAuth } = require("../../utils/auth.js");
 
 const router = express.Router();
 

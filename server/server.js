@@ -3,19 +3,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const db = require("./config/connection.js");
-
-const userRoute = require("./routes/userRoute.js");
-const productRoute = require("./routes/productRoute.js");
-const orderRoute = require("./routes/orderRoute.js");
+const route = require("./routes/index.js");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
+app.use(route);
 
-app.use("/api/users", userRoute);
-app.use("/api/products", productRoute);
-app.use("/api/orders", orderRoute);
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, "/../client/build")));
 
