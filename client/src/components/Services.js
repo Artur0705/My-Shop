@@ -1,9 +1,21 @@
+import {
+  Flex,
+  Spacer,
+  Image,
+  Text,
+  Button,
+  useMediaQuery,
+  TableContainer,
+  Table,
+  TableCaption,
+  Tbody,
+  Tr,
+  Td,
+} from "@chakra-ui/react";
 import React from "react";
-import { Flex, Spacer, Text, Button, useMediaQuery } from "@chakra-ui/react";
 
-const Services = () => {
+const Services = ({ data }) => {
   const [isLargerThanLG] = useMediaQuery("(min-width: 62em)");
-
   return (
     <Flex
       width="full"
@@ -19,7 +31,9 @@ const Services = () => {
         mb={isLargerThanLG ? "0" : "6"}
         alignItems="center"
         justifyContent="center"
-      ></Flex>
+      >
+        <Image src={data.image} alt={data.image} w="full" />
+      </Flex>
       <Spacer />
       <Flex
         w={isLargerThanLG ? "60%" : "full"}
@@ -27,12 +41,23 @@ const Services = () => {
         ml={isLargerThanLG ? "7" : "0"}
       >
         <Text fontSize={isLargerThanLG ? "5xl" : "4xl"} fontWeight="bold">
-          We build, We revive
+          {data.name}
         </Text>
 
         <Text mb="6" opacity="0.8">
-          Lorem ipsum...
+          {data.description}
         </Text>
+
+        <TableContainer>
+          <Table variant="simple">
+            <Tbody>
+              <Tr>
+                <Td>Price</Td>
+                <Td>{data.price}$</Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        </TableContainer>
 
         <Button width="200px" size="lg" colorScheme="blue">
           CONTACT US

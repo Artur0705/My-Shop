@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { listProducts } from "../actions/productActions.js";
-import Rating from "../components/Rating.js";
+import { listProducts } from "../actions/productActions";
+import Rating from "../components/Rating";
 import { Button, Container, Flex, Input, Select } from "@chakra-ui/react";
-import Hero from "../components/Hero.js";
+import Hero from "../components/Hero";
 
 function HomePage(props) {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -12,7 +12,7 @@ function HomePage(props) {
   const params = useParams();
   const category = params.id ? params.id : "";
   const productList = useSelector((state) => state.productList);
-  const { products, loading, error } = productList || {};
+  const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts(category));
@@ -85,11 +85,11 @@ function HomePage(props) {
             flexWrap="wrap"
             flexDirection={"row"}
           >
-            {products?.map((product) => (
-              <>
+            {products &&
+              products.map((product) => (
                 <>
                   <Flex
-                    width={"32%"}
+                    width={"400px"}
                     shadow="md"
                     p="6"
                     alignItems="center"
@@ -102,34 +102,7 @@ function HomePage(props) {
                     <Hero data={product} />
                   </Flex>
                 </>
-                <div>
-                  <li key={product._id}>
-                    <div className="product">
-                      <Link to={"/product/" + product._id}>
-                        <img
-                          className="product-image"
-                          src={product.image}
-                          alt="product"
-                        />
-                      </Link>
-                      <div className="product-name">
-                        <Link to={"/product/" + product._id}>
-                          {product.name}
-                        </Link>
-                      </div>
-                      <div className="product-brand">{product.brand}</div>
-                      <div className="product-price">${product.price}</div>
-                      <div className="product-rating">
-                        <Rating
-                          value={product.rating}
-                          text={product.numReviews + " reviews"}
-                        />
-                      </div>
-                    </div>
-                  </li>
-                </div>
-              </>
-            ))}
+              ))}
           </Flex>
         </ul>
       )}
