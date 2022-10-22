@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   Link,
   MenuItem,
+  Image,
   MenuButton,
   MenuList,
   Menu,
@@ -66,6 +67,20 @@ const Nav = ({ onOpen, ref, userInfo }) => {
                       Profile
                     </Link>
                   </MenuItem>
+                  {userInfo && userInfo.isAdmin && (
+                    <>
+                      <MenuItem minH="48px">
+                        <Link href="/orders" fontSize="md" mr="10">
+                          Orders
+                        </Link>
+                      </MenuItem>
+                      <MenuItem minH="48px">
+                        <Link href="/products" fontSize="md" mr="10">
+                          Products
+                        </Link>
+                      </MenuItem>
+                    </>
+                  )}
                 </MenuList>
               </Menu>
             ) : (
