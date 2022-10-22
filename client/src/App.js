@@ -21,6 +21,10 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
 import DrawerComponent from "./components/DrawerComponent";
+import ProductsPage from "./pages/ProductsPage";
+import ShippingPage from "./pages/ShippingPage";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -35,6 +39,11 @@ function App() {
         <Route path="login" element={<SigninPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>,
         <Route path="profile" element={<ProfilePage />} />
+        <Route path="products" element={<ProductsPage />} />
+        <Route path="product/:id" element={<ProductPage />} />
+        <Route path="shipping" element={<ShippingPage />} />
+        <Route path="placeorder" element={<PlaceOrderPage />} />
+        <Route path="category/:id" element={<HomePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     )
