@@ -91,16 +91,6 @@ function RegisterPage(props) {
             <Button type={"submit"} colorScheme="blue" mt="4">
               Register
             </Button>
-
-            <Link
-              mt="4"
-              href={
-                redirect === "/" ? "register" : "register?redirect=" + redirect
-              }
-              className="button secondary text-center"
-            >
-              Create account
-            </Link>
           </Flex>
         </form>
       </Container>
