@@ -54,18 +54,12 @@ function App() {
       <Nav ref={btnRef} onOpen={onOpen} userInfo={userInfo} />
       <RouterProvider router={router} />
 
-      <Flex>
-        <Hero />
-        <Hero />
-        <Hero />
-      </Flex>
       <AboutUs />
-      <Services />
       <Testimonials />
       <ContactUs />
-      <DrawerComponent isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
 
       <Footer />
+      <DrawerComponent isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
     </Box>
   );
 }
