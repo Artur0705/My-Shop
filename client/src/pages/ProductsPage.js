@@ -24,6 +24,8 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
+  Select,
+  Stack,
   Table,
   TableCaption,
   TableContainer,
@@ -90,6 +92,7 @@ function ProductsPage(props) {
     onOpen();
   };
   const submitHandler = (e) => {
+    alert();
     e.preventDefault();
     dispatch(
       saveProduct({
@@ -180,13 +183,14 @@ function ProductsPage(props) {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
+
         <ModalContent>
-          <ModalHeader>Create product</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {modalVisible && (
-              <div className="form">
-                <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}>
+            <ModalHeader>Create product</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              {modalVisible && (
+                <div className="form">
                   <div>
                     {loadingSave && <div>Loading...</div>}
                     {errorSave && <div>{errorSave}</div>}
@@ -239,14 +243,12 @@ function ProductsPage(props) {
                   </FormControl>
 
                   <FormControl>
-                    <FormLabel>CountInStock</FormLabel>
-                    <NumberInput
-                      maxW="100px"
-                      mr="2rem"
-                      value={countInStock}
-                      onChange={(e) => setCountInStock(e.target.value)}
-                    >
-                      <NumberInputField />
+                    <FormLabel>Count In Stock</FormLabel>
+                    <NumberInput maxW="100px" mr="2rem">
+                      <NumberInputField
+                        value={countInStock}
+                        onChange={(e) => setCountInStock(e.target.value)}
+                      />
                       <NumberInputStepper>
                         <NumberIncrementStepper />
                         <NumberDecrementStepper />
@@ -256,13 +258,15 @@ function ProductsPage(props) {
 
                   <FormControl>
                     <FormLabel>Category</FormLabel>
-                    <Input
-                      type="text"
-                      name="category"
-                      value={category}
-                      id="category"
+                    <Select
+                      placeholder="Category"
                       onChange={(e) => setCategory(e.target.value)}
-                    />
+                      value={category}
+                    >
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                    </Select>
                   </FormControl>
 
                   <FormControl>
@@ -274,19 +278,19 @@ function ProductsPage(props) {
                       onChange={(e) => setDescription(e.target.value)}
                     ></Textarea>
                   </FormControl>
-                </form>
-              </div>
-            )}
-          </ModalBody>
+                </div>
+              )}
+            </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button type={"submit"} colorScheme="red">
-              {id ? "Update" : "Create"}
-            </Button>
-          </ModalFooter>
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button type={"submit"} colorScheme="red">
+                {id ? "Update" : "Create"}
+              </Button>
+            </ModalFooter>
+          </form>
         </ModalContent>
       </Modal>
     </div>
