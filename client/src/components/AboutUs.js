@@ -33,9 +33,10 @@ const AboutUs = () => {
       flexWrap="wrap"
       flexDirection={isLargerThanMD ? "row" : "column"}
     >
-      {array.map((arr) => (
+      {array.map((arr, index) => (
         <>
           <Flex
+            key={arr.id}
             height="300px"
             bg="blackAlpha.200"
             width={isLargerThanMD ? "32%" : "full"}

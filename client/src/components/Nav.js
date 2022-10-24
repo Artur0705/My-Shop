@@ -17,7 +17,7 @@ import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaAlignJustify } from "react-icons/fa";
 import { Icon } from "@chakra-ui/react";
 
-const Nav = ({ onOpen, ref, userInfo }) => {
+const Nav = ({ onOpen, ind, userInfo }) => {
   const [scroll, setScroll] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const navBg = useColorModeValue("white", "blackAlpha.200");
@@ -57,7 +57,7 @@ const Nav = ({ onOpen, ref, userInfo }) => {
           <>
             {userInfo ? (
               <Menu class="z-index-1000">
-                <MenuButton rightIcon={<ChevronDownIcon />}>
+                <MenuButton righticon={<ChevronDownIcon />}>
                   {userInfo.name}
                 </MenuButton>
                 <MenuList>
@@ -91,7 +91,7 @@ const Nav = ({ onOpen, ref, userInfo }) => {
             )}
           </>
         ) : (
-          <IconButton ref={ref} onClick={onOpen}>
+          <IconButton ref={ind} onClick={onOpen}>
             <Icon as={FaAlignJustify} />
           </IconButton>
         )}

@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken"); // import dotenv from "dotenv";
+const secret = "mysecretssshhhhhhh";
 
 const getToken = (user) => {
   return jwt.sign(
@@ -8,7 +9,7 @@ const getToken = (user) => {
       email: user.email,
       isAdmin: user.isAdmin,
     },
-    process.env.JWT_SECRET,
+    secret,
     {
       expiresIn: "48h",
     }
@@ -20,7 +21,7 @@ const isAuth = (req, res, next) => {
 
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.JWT_SECRET, (err, decode) => {
+    jwt.verify(onlyToken, secret, (err, decode) => {
       if (err) {
         return res.status(401).send({ message: "Invalid Token" });
       }
