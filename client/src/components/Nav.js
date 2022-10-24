@@ -9,7 +9,6 @@ import {
   useMediaQuery,
   Link,
   MenuItem,
-  Image,
   MenuButton,
   MenuList,
   Menu,
@@ -57,7 +56,7 @@ const Nav = ({ onOpen, ref, userInfo }) => {
         {isLargerThanMD ? (
           <>
             {userInfo ? (
-              <Menu>
+              <Menu class="z-index-1000">
                 <MenuButton rightIcon={<ChevronDownIcon />}>
                   {userInfo.name}
                 </MenuButton>
@@ -84,9 +83,11 @@ const Nav = ({ onOpen, ref, userInfo }) => {
                 </MenuList>
               </Menu>
             ) : (
-              <Link href="/login" fontSize="md" mr="10">
-                Login
-              </Link>
+              <>
+                <Link href="/login" fontSize="md" mr="10">
+                  Login
+                </Link>
+              </>
             )}
           </>
         ) : (
@@ -94,6 +95,10 @@ const Nav = ({ onOpen, ref, userInfo }) => {
             <Icon as={FaAlignJustify} />
           </IconButton>
         )}
+
+        <Link href="/cart" fontSize="md" ml="10">
+          Cart
+        </Link>
       </Flex>
     </Flex>
   );
