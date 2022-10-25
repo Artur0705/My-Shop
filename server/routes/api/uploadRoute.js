@@ -39,7 +39,7 @@ const uploadS3 = multer({ storage: storageS3 });
 router.post("/s3", uploadS3.single("image"), (req, res) => {
   res.send(req.file.location);
 });
-export default router;
+module.exports = router;
 
 // References used in here  https://levelup.gitconnected.com/file-upload-express-mongodb-multer-s3-7fad4dfb3789#:~:text=multer%20%3A%20Multer%20is%20a%20node,aws%2Dsdk%20multer%20multer%2Ds3
 //                          https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-nodejs.html
