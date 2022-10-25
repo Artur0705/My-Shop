@@ -13,6 +13,7 @@ app.use(route);
 const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, "/../client/build")));
+app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../client/build/index.html`));

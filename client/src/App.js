@@ -45,7 +45,7 @@ function App() {
         <Route path="shipping" element={<ShippingPage />} />
         <Route path="placeorder" element={<PlaceOrderPage />} />
         <Route path="category/:id" element={<HomePage />} />
-        <Route path="cart/:id" element={<CartPage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     )
