@@ -10,6 +10,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(route);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../FrontEnd/build")));
+}
+
 const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, "/../client/build")));
