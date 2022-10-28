@@ -31,7 +31,11 @@ const cartItems = Cookie.get("cartItems") || [];
 const userInfo = Cookie.get("userInfo") || null;
 
 const initialState = {
-  cart: { cartItems, shipping: {}, payment: {} },
+  cart: {
+    cartItems: (cartItems.length && JSON.parse(cartItems)) || [],
+    shipping: {},
+    payment: {},
+  },
   userSignin: { userInfo: JSON.parse(userInfo) },
 };
 
