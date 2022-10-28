@@ -39,7 +39,7 @@ function CartScreen(props) {
   }, []);
 
   const checkoutHandler = () => {
-    navigate("/signin?redirect=shipping");
+    navigate("/shipping");
   };
 
   return (
@@ -56,7 +56,9 @@ function CartScreen(props) {
               ) : (
                 cartItems.map((item) => (
                   <Tr>
-                    <Td>{item.image}</Td>
+                    <Td>
+                      <img src={item.image} width="100" alt="" />
+                    </Td>
                     <Td>
                       {" "}
                       <Link to={"/product/" + item.product}>{item.name}</Link>

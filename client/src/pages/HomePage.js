@@ -38,7 +38,7 @@ function HomePage(props) {
         h="10vh"
         alignItems="center"
         p="6"
-        position="sticky"
+        // position="sticky"
         top="0"
         zIndex="sticky"
         w="full"
@@ -78,8 +78,9 @@ function HomePage(props) {
         <ul className="products">
           <Flex
             alignItems="center"
-            justifyContent="space-between"
+            // justifyContent="space-between"
             w="full"
+            gridGap={10}
             py="16"
             px={"6"}
             flexWrap="wrap"
