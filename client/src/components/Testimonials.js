@@ -35,7 +35,10 @@ const Testimonials = () => {
         borderRadius="md"
         justifyContent="center"
       >
-        <Text mb="5">"Lorem ipsum."</Text>
+        <Text mb="5">
+          "I had a great experience shopping on this website and would
+          definitely recommend it to others."
+        </Text>
         <Wrap>
           <WrapItem>
             <Avatar
@@ -47,9 +50,6 @@ const Testimonials = () => {
           <WrapItem>
             <Box>
               <Text fontSize="sm">Karl Brighton</Text>
-              <Text fontSize="sm" opacity="0.7">
-                Test Customer
-              </Text>
             </Box>
           </WrapItem>
         </Wrap>
@@ -67,7 +67,10 @@ const Testimonials = () => {
         borderRadius="md"
         justifyContent="center"
       >
-        <Text mb="5">"Lorem ipsum..."</Text>
+        <Text mb="5">
+          "I found the perfect pair of shoes on this website and the price was
+          unbeatable."
+        </Text>
 
         <Wrap>
           <WrapItem>
@@ -80,9 +83,6 @@ const Testimonials = () => {
           <WrapItem>
             <Box>
               <Text fontSize="sm">Krishna Bells</Text>
-              <Text fontSize="sm" opacity="0.7">
-                Test customer
-              </Text>
             </Box>
           </WrapItem>
         </Wrap>
@@ -100,7 +100,10 @@ const Testimonials = () => {
         borderRadius="md"
         justifyContent="center"
       >
-        <Text mb="5">"Lorem ipsum..."</Text>
+        <Text mb="5">
+          "The shoes were exactly what I was looking for and the website was
+          easy to navigate".
+        </Text>
         <Wrap>
           <WrapItem>
             <Avatar
@@ -112,9 +115,6 @@ const Testimonials = () => {
           <WrapItem>
             <Box>
               <Text fontSize="sm">Ben Spiff</Text>
-              <Text fontSize="sm" opacity="0.7">
-                Test Customer
-              </Text>
             </Box>
           </WrapItem>
         </Wrap>

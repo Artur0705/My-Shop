@@ -1,25 +1,26 @@
 import React from "react";
 import { Flex, Spacer, Text, useMediaQuery } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
-import { FaTools, FaHandshake, FaStar } from "react-icons/fa";
+import { FaHandshake, FaStar } from "react-icons/fa";
+import { GiConverseShoe } from "react-icons/gi";
 
 const AboutUs = () => {
   const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
   const array = [
     {
       id: 1,
-      text: "Test Text 1",
-      icon: FaTools,
+      text: " We are a shoe company that provides high-quality, stylish shoes for both men and women.",
+      icon: GiConverseShoe,
     },
     {
       id: 2,
-      text: "Test Text 2",
-      icon: FaHandshake,
+      text: "We have a wide selection of shoes to choose from, so you can find the perfect pair for any occasion.      ",
+      icon: FaStar,
     },
     {
       id: 3,
-      text: "Test Text 3",
-      icon: FaStar,
+      text: "We pride ourselves on our excellent customer service and fast shipping.",
+      icon: FaHandshake,
     },
   ];
   return (
