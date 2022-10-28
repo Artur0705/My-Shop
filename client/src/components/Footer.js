@@ -11,6 +11,7 @@ const Footer = () => {
       alignItems="center"
       textAlign="center"
       justifyContent="center"
+      mt="10"
     >
       <Text mb="3">
         Provided by{" "}

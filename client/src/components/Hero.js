@@ -17,6 +17,7 @@ const Hero = ({ data }) => {
       w="full"
       py="16"
       minHeight="90vh"
+      h="600px"
       flexDirection={"column"}
     >
       <Flex w="full" px="16px" alignItems="center" justifyContent="center">

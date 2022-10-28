@@ -43,7 +43,7 @@ const Nav = ({ onOpen, ind, userInfo }) => {
       bg={navBg}
     >
       <Text fontSize="xl" fontWeight="bold">
-        Shop
+        <Link href="/">ShoesOn</Link>
       </Text>
 
       <Spacer />
