@@ -244,9 +244,12 @@ function ProductsPage(props) {
 
                   <FormControl>
                     <FormLabel>Count In Stock</FormLabel>
-                    <NumberInput maxW="100px" mr="2rem">
+                    <NumberInput
+                      maxW="100px"
+                      mr="2rem"
+                      defaultValue={countInStock}
+                    >
                       <NumberInputField
-                        value={countInStock}
                         onChange={(e) => setCountInStock(e.target.value)}
                       />
                       <NumberInputStepper>
