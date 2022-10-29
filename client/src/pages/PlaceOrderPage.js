@@ -3,23 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderActions";
-import {
-  Button,
-  Container,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 function PlaceOrderPage(props) {
   const cart = useSelector((state) => state.cart);
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { loading, success, error, order } = orderCreate;
+  const { success, order } = orderCreate;
   const navigate = useNavigate();
 
   const { cartItems, shipping, payment } = cart;
@@ -50,111 +38,87 @@ function PlaceOrderPage(props) {
   };
   useEffect(() => {
     if (success) {
-      props.history.push("/order/" + order._id);
+      window.location.href = order;
     }
   }, [success]);
 
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
-
-      <Container maxW="550px">
-        <TableContainer>
-          <Table variant="simple">
-            <TableCaption>Shopping Cart</TableCaption>
-            <Tbody>
-              <Tr>
-                <Td>Shipping</Td>
-                <Td colSpan={"2"}>
-                  {cart.shipping.address}, {cart.shipping.city},
-                  {cart.shipping.postalCode}, {cart.shipping.country},
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Payment</Td>
-                <Td colSpan={"2"}>
-                  Payment Method: {cart.payment.paymentMethod}
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
-        <TableContainer>
-          <Table variant="simple">
-            <TableCaption>
+      <div className="placeorder">
+        <div className="placeorder-info">
+          <div>
+            <h3>Shipping</h3>
+            <div>
+              {cart.shipping.address}, {cart.shipping.city},
+              {cart.shipping.postalCode}, {cart.shipping.country},
+            </div>
+          </div>
+          <div>
+            <h3>Payment</h3>
+            <div>Payment Method: {cart.payment.paymentMethod}</div>
+          </div>
+          <div>
+            <ul className="cart-list-container">
+              <li>
+                <h3>Shopping Cart</h3>
+                <div>Price</div>
+              </li>
+              {cartItems.length === 0 ? (
+                <div>Cart is empty</div>
+              ) : (
+                cartItems.map((item) => (
+                  <li>
+                    <div className="cart-image">
+                      <img src={item.image} alt="product" />
+                    </div>
+                    <div className="cart-name">
+                      <div>
+                        <Link to={"/product/" + item.product}>{item.name}</Link>
+                      </div>
+                      <div>Qty: {item.qty}</div>
+                    </div>
+                    <div className="cart-price">${item.price}</div>
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        </div>
+        <div className="placeorder-action">
+          <ul>
+            <li>
               <Button
                 type="submit"
                 colorScheme="blue"
+                mt="4"
                 onClick={placeOrderHandler}
               >
                 Place Order
               </Button>
-            </TableCaption>
-            <Tbody>
-              <Tr>
-                <Td>Price</Td>
-                <Td colSpan={"2"}>
-                  {" "}
-                  {cartItems.length === 0 ? (
-                    <div>Cart is empty</div>
-                  ) : (
-                    cartItems.map((item) => (
-                      <li>
-                        <div className="cart-image">
-                          <img src={item.image} alt="product" />
-                        </div>
-                        <div className="cart-name">
-                          <div>
-                            <Link to={"/product/" + item.product}>
-                              {item.name}
-                            </Link>
-                          </div>
-                          <div>Qty: {item.qty}</div>
-                        </div>
-                        <div className="cart-price">${item.price}</div>
-                      </li>
-                    ))
-                  )}
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Payment</Td>
-                <Td colSpan={"2"}>
-                  Payment Method: {cart.payment.paymentMethod}
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
-        <TableContainer>
-          <Table variant="simple">
-            <h3>Order Summary</h3>
-            <Tbody>
-              <Tr>
-                <Td>Items</Td>
-                <Td colSpan={"2"}>${itemsPrice}</Td>
-              </Tr>
-              <Tr>
-                <Td>Shipping</Td>
-                <Td colSpan={"2"}>${shippingPrice}</Td>
-              </Tr>
-              <Tr>
-                <Td>Tax</Td>
-                <Td colSpan={"2"}>${taxPrice}</Td>
-              </Tr>
-              <Tr>
-                <Td>Total</Td>
-                <Td colSpan={"2"}>${totalPrice}</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
-      </Container>
+            </li>
+            <li>
+              <h3>Order Summary</h3>
+            </li>
+            <li>
+              <div>Items</div>
+              <div>${itemsPrice}</div>
+            </li>
+            <li>
+              <div>Shipping</div>
+              <div>${shippingPrice}</div>
+            </li>
+            <li>
+              <div>Tax</div>
+              <div>${taxPrice}</div>
+            </li>
+            <li>
+              <div>Order Total</div>
+              <div>${totalPrice}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
