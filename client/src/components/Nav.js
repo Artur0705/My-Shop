@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Text,
   Flex,
-  Spacer,
   IconButton,
   useColorMode,
   useColorModeValue,
@@ -32,13 +31,12 @@ const Nav = ({ onOpen, ind, userInfo }) => {
 
   return (
     <Flex
-      h="10vh"
       alignItems="center"
+      justifyContent="space-between"
       p="6"
       boxShadow={scroll ? "base" : "none"}
-      position="sticky"
       top="0"
-      zIndex="sticky"
+      flexWrap="wrap"
       w="full"
       bg={navBg}
     >
@@ -46,7 +44,10 @@ const Nav = ({ onOpen, ind, userInfo }) => {
         <Link href="/">ShoesOn</Link>
       </Text>
 
-      <Spacer />
+      <Link href="/category/running_shoes">Running shoes</Link>
+      <Link href="/category/sneakers">Sneakers</Link>
+      <Link href="/category/classic">Classic</Link>
+      <Link href="/category/work_boots">Work boots</Link>
 
       <Flex alignItems="center">
         <IconButton mr="10" w={6} h={6} p={5} onClick={toggleColorMode}>
@@ -57,7 +58,7 @@ const Nav = ({ onOpen, ind, userInfo }) => {
           <>
             {userInfo ? (
               <Menu class="z-index-1000">
-                <MenuButton righticon={<ChevronDownIcon />}>
+                <MenuButton rightIcon={<ChevronDownIcon />}>
                   {userInfo.name}
                 </MenuButton>
                 <MenuList>
