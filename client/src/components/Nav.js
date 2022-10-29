@@ -58,7 +58,7 @@ const Nav = ({ onOpen, ind, userInfo }) => {
           <>
             {userInfo ? (
               <Menu class="z-index-1000">
-                <MenuButton rightIcon={<ChevronDownIcon />}>
+                <MenuButton righticon={<ChevronDownIcon />}>
                   {userInfo.name}
                 </MenuButton>
                 <MenuList>
