@@ -9,8 +9,11 @@ import {
   Link,
   Flex,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 const DrawerComponent = ({ isOpen, onClose, btnRef }) => {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   return (
     <Drawer
       isOpen={isOpen}
@@ -27,8 +30,19 @@ const DrawerComponent = ({ isOpen, onClose, btnRef }) => {
 
         <DrawerBody>
           <Flex flexDirection="column">
-            <Link mb="5">Test</Link>
-            <Link>Test</Link>
+            <Link href="/profile" fontSize="md" mr="10">
+              Profile
+            </Link>
+            {userInfo && userInfo.isAdmin && (
+              <>
+                <Link href="/products" fontSize="md" mr="10">
+                  Products
+                </Link>
+                <Link href="/orders" fontSize="md" mr="10">
+                  Orders
+                </Link>
+              </>
+            )}
           </Flex>
         </DrawerBody>
       </DrawerContent>
