@@ -26,14 +26,16 @@ const createOrder = (order) => async (dispatch, getState) => {
     const {
       userSignin: { userInfo },
     } = getState();
+
     const {
-      data: { data: newOrder },
+      data: { session: session },
     } = await Axios.post("/api/orders", order, {
       headers: {
         Authorization: " Bearer " + userInfo.token,
       },
     });
-    dispatch({ type: ORDER_CREATE_SUCCESS, payload: newOrder });
+    console.log(session);
+    dispatch({ type: ORDER_CREATE_SUCCESS, payload: session });
   } catch (error) {
     dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });
   }
@@ -91,7 +93,7 @@ const payOrder = (order, paymentResult) => async (dispatch, getState) => {
       userSignin: { userInfo },
     } = getState();
     const { data } = await Axios.put(
-      "/api/orders/" + order._id + "/pay",
+      "/api/orders/" + order + "/pay",
       paymentResult,
       {
         headers: { Authorization: "Bearer " + userInfo.token },
