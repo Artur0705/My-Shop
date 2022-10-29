@@ -11,7 +11,6 @@ import {
   useMediaQuery,
   TableContainer,
   Table,
-  TableCaption,
   Tbody,
   Tr,
   Td,
@@ -20,22 +19,22 @@ import {
   FormLabel,
   Select,
   Container,
-  Thead,
-  Th,
+  useToast,
 } from "@chakra-ui/react";
 import { PRODUCT_REVIEW_SAVE_RESET } from "../constants/productConstants";
-import Services from "../components/Services";
 import Rating from "../components/Rating";
 
 function ProductPage(props) {
+  const toast = useToast();
+
   const [isLargerThanLG] = useMediaQuery("(min-width: 62em)");
-  const [qty, setQty] = useState(1);
+  const [qty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const productDetails = useSelector((state) => state.productDetails);
-  const { product, loading, error } = productDetails;
+  const { product } = productDetails;
   const productReviewSave = useSelector((state) => state.productReviewSave);
   const { success: productSaveSuccess } = productReviewSave;
   const dispatch = useDispatch();
@@ -44,7 +43,13 @@ function ProductPage(props) {
 
   useEffect(() => {
     if (productSaveSuccess) {
-      alert("Review submitted successfully.");
+      toast({
+        title: "Thank you!🚀",
+        description: "Your review has been successfully submiited!",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
       setRating(0);
       setComment("");
       dispatch({ type: PRODUCT_REVIEW_SAVE_RESET });
