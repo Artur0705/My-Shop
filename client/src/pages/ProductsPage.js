@@ -25,7 +25,6 @@ import {
   NumberInputField,
   NumberInputStepper,
   Select,
-  Stack,
   Table,
   TableCaption,
   TableContainer,
@@ -39,7 +38,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-function ProductsPage(props) {
+function ProductsPage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState("");
@@ -52,7 +51,7 @@ function ProductsPage(props) {
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
   const productList = useSelector((state) => state.productList);
-  const { loading, products, error } = productList;
+  const { products, error } = productList;
 
   const productSave = useSelector((state) => state.productSave);
   const {
@@ -62,11 +61,7 @@ function ProductsPage(props) {
   } = productSave;
 
   const productDelete = useSelector((state) => state.productDelete);
-  const {
-    loading: loadingDelete,
-    success: successDelete,
-    error: errorDelete,
-  } = productDelete;
+  const { success: successDelete } = productDelete;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -187,6 +182,7 @@ function ProductsPage(props) {
         <ModalContent>
           <form onSubmit={submitHandler}>
             <ModalHeader>Create product</ModalHeader>
+            {error}
             <ModalCloseButton />
             <ModalBody>
               {modalVisible && (
@@ -266,9 +262,10 @@ function ProductsPage(props) {
                       onChange={(e) => setCategory(e.target.value)}
                       value={category}
                     >
-                      <option value="option1">Option 1</option>
-                      <option value="option2">Option 2</option>
-                      <option value="option3">Option 3</option>
+                      <option value="running_shoes">Running shoes</option>
+                      <option value="sneakers">Sneakers</option>
+                      <option value="classic">Classic</option>
+                      <option value="work_boots">Work boots</option>
                     </Select>
                   </FormControl>
 
