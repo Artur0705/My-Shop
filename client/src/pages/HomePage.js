@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
-import Rating from "../components/Rating";
 import { Button, Container, Flex, Input, Select } from "@chakra-ui/react";
 import Hero from "../components/Hero";
 
-function HomePage(props) {
+function HomePage() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const params = useParams();
@@ -33,16 +32,7 @@ function HomePage(props) {
 
   return (
     <>
-      {category && <h2>{category}</h2>}
-      <Flex
-        h="10vh"
-        alignItems="center"
-        p="6"
-        // position="sticky"
-        top="0"
-        zIndex="sticky"
-        w="full"
-      >
+      <Flex h="10vh" alignItems="center" p="6" top="0" zIndex="sticky" w="full">
         <Container maxW={"400px"}>
           <form onSubmit={submitHandler}>
             <Flex>
