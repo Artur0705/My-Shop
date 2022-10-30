@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AboutUs from "../components/AboutUs";
+import Testimonials from "../components/Testimonials";
 import "./ErrorPage.css";
 
 const ErrorPage = () => {
@@ -12,6 +14,8 @@ const ErrorPage = () => {
           <Link to="/">Back to home</Link>
         </div>
       </div>
+      <AboutUs />
+      <Testimonials />
     </>
   );
 };
