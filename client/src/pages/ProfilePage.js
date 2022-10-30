@@ -146,7 +146,6 @@ function ProfilePage(props) {
           </TableContainer>
         </Container>
       </>
-      <ContactUs />
     </>
   );
 }
