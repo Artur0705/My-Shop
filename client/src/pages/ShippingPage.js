@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShipping } from "../actions/cartActions";
@@ -18,6 +18,8 @@ function ShippingPage(props) {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -78,9 +80,15 @@ function ShippingPage(props) {
           </FormControl>
 
           <Flex alignItems={"center"} justifyContent={"space-between"}>
-            <Button type="submit" colorScheme="blue" mt="4">
-              Continue
-            </Button>
+            {userInfo ? (
+              <Button type="submit" colorScheme="blue" mt="4">
+                Continue
+              </Button>
+            ) : (
+              <Button type={"submit"} colorScheme="blue" mt="4">
+                <Link to="/login">Login</Link>
+              </Button>
+            )}
           </Flex>
         </form>
       </Container>

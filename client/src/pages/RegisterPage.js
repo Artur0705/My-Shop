@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { register } from "../actions/userActions";
 import {
@@ -7,7 +7,6 @@ import {
   Container,
   Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
   Input,
   Text,
@@ -17,13 +16,12 @@ function RegisterPage(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const redirect = "/"; //props.location.search ? props.location.search.split("=")[1] : '/'
+  const redirect = "/";
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
