@@ -125,7 +125,7 @@ function ProductsPage() {
         },
       })
       .then((response) => {
-        setImage(response.data);
+        setImage(`http://localhost:5000${response.data.split("\\").join("/")}`);
         setUploading(false);
       })
       .catch((err) => {

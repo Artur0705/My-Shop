@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const User = require("../../models/userModel");
 const { getToken, isAuth } = require("../../utils/auth.js");
+const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
@@ -26,19 +27,23 @@ router.put("/:id", isAuth, async (req, res) => {
 });
 
 router.post("/signin", async (req, res) => {
-  const signinUser = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  });
-  if (signinUser) {
-    res.send({
-      _id: signinUser.id,
-      name: signinUser.name,
-      email: signinUser.email,
-      isAdmin: signinUser.isAdmin,
-      token: getToken(signinUser),
+  try {
+    const signinUser = await User.findOne({
+      email: req.body.email,
     });
-  } else {
+    const verified = bcrypt.compareSync(req.body.password, signinUser.password);
+    if (signinUser && verified) {
+      res.send({
+        _id: signinUser.id,
+        name: signinUser.name,
+        email: signinUser.email,
+        isAdmin: signinUser.isAdmin,
+        token: getToken(signinUser),
+      });
+    } else {
+      res.status(401).send({ message: "Invalid Email or Password." });
+    }
+  } catch (error) {
     res.status(401).send({ message: "Invalid Email or Password." });
   }
 });
@@ -106,7 +111,7 @@ router.get("/createadmin", async (req, res) => {
     const user = new User({
       name: "admin",
       email: "admin@gmail.com",
-      password: "password",
+      password: "$2b$10$HCwGpaaw.GsUzDX1seZYmuKAVbDJKsvlHJrg6t2cO9Ul/kJoYALra", // password=123
       isAdmin: true,
     });
     const newUser = await user.save();
