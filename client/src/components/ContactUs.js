@@ -23,7 +23,6 @@ const ContactUs = () => {
   };
 
   const handleChange = (e) => {
-    console.log(e.currentTarget.name);
     setInput({
       ...input,
       [e.currentTarget.name]: e.currentTarget.value,

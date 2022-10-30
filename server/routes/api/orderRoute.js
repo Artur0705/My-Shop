@@ -3,7 +3,6 @@ const Order = require("../../models/orderModel.js");
 const { isAuth, isAdmin } = require("../../utils/auth.js");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 require("dotenv").config();
-console.log(process.env.STRIPE_KEY);
 
 const router = express.Router();
 
@@ -53,7 +52,6 @@ router.post("/", isAuth, async (req, res) => {
 
     const line_items = [];
     for (let i = 0; i < products.length; i++) {
-      console.log(products[i].image.split("/uploads"));
       const product = await stripe.products.create({
         name: products[i].name,
         description: products[i].description,

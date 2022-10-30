@@ -34,7 +34,6 @@ const createOrder = (order) => async (dispatch, getState) => {
         Authorization: " Bearer " + userInfo.token,
       },
     });
-    console.log(session);
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: session });
   } catch (error) {
     dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });

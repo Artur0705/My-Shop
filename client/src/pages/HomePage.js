@@ -82,6 +82,7 @@ function HomePage() {
                 <>
                   <Flex
                     width={"400px"}
+                    height={"80rem"}
                     shadow="md"
                     p="6"
                     alignItems="center"
