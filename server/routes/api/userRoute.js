@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require("nodemailer");
 const User = require("../../models/userModel");
 const { getToken, isAuth } = require("../../utils/auth.js");
 
@@ -43,30 +44,68 @@ router.post("/signin", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  });
-  const newUser = await user.save();
-  if (newUser) {
-    res.send({
-      _id: newUser.id,
-      name: newUser.name,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
-      token: getToken(newUser),
+  try {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
     });
-  } else {
-    res.status(401).send({ message: "Invalid User Data." });
+    const newUser = await user.save();
+    if (newUser) {
+      res.send({
+        _id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        isAdmin: newUser.isAdmin,
+        token: getToken(newUser),
+      });
+    } else {
+      res.status(401).send({ message: "Invalid User Data." });
+    }
+  } catch (error) {
+    res.status(401).send({ message: error.message });
   }
 });
+
+router.post("/contact", (req, res) => {
+  const { name, email, message } = req.body;
+
+  sendEmail(email, message, name);
+  res.json("email sent");
+});
+
+const sendEmail = (from, text, name) => {
+  let transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  let mailOptions = {
+    from,
+    to: "artlil420@gmail.com",
+    subject: "[SHOES_ON]: from " + name,
+    text,
+    html: "Name: " + name + "<br> Email: " + from + "<br> Message: " + text,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
 
 router.get("/createadmin", async (req, res) => {
   try {
     const user = new User({
       name: "admin",
-      email: "admin@example.com",
+      email: "admin@gmail.com",
       password: "password",
       isAdmin: true,
     });
