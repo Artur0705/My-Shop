@@ -23,6 +23,7 @@ import PlaceOrderPage from "./pages/PlaceOrderPage";
 import ShippingPage from "./pages/ShippingPage";
 import Footer from "./components/Footer";
 import ErrorPage from "./pages/ErrorPage";
+import OrdersPage from "./pages/OrdersPage";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -45,6 +46,7 @@ function App() {
         <Route path="category/:id" element={<HomePage />} />
         <Route path="cart/:id" element={<CartPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     )
