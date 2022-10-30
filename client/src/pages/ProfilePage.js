@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { logout, update } from "../actions/userActions";
-import { listMyOrders } from "../actions/orderActions";
+import { listMyOrders, payOrder } from "../actions/orderActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -11,7 +11,6 @@ import {
   FormLabel,
   Input,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -20,12 +19,14 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import ContactUs from "../components/ContactUs";
 
 function ProfilePage(props) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+  const [search] = useSearchParams();
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -43,12 +44,15 @@ function ProfilePage(props) {
   const { loading, success, error } = userUpdate;
 
   const myOrderList = useSelector((state) => state.myOrderList);
-  const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
+  const { orders } = myOrderList;
   useEffect(() => {
     if (userInfo) {
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
+    }
+    if (search.get("received")) {
+      dispatch(payOrder(search.get("received")));
     }
     dispatch(listMyOrders());
     return () => {};
@@ -126,7 +130,6 @@ function ProfilePage(props) {
                   <Th>DATE</Th>
                   <Th>TOTAL</Th>
                   <Th>PAID</Th>
-                  <Th>ACTIONS</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -135,10 +138,7 @@ function ProfilePage(props) {
                     <Td>{order._id}</Td>
                     <Td>{order.createdAt}</Td>
                     <Td>{order.totalPrice}</Td>
-                    <Td>{order.isPaid}</Td>
-                    <Td>
-                      <Link to={"/order/" + order._id}>DETAILS</Link>
-                    </Td>
+                    <Td>{order.isPaid ? "Paid" : "Pending"}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -146,6 +146,7 @@ function ProfilePage(props) {
           </TableContainer>
         </Container>
       </>
+      <ContactUs />
     </>
   );
 }
