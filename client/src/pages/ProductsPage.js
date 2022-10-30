@@ -36,6 +36,7 @@ import {
   Thead,
   Tr,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 
 function ProductsPage() {
@@ -52,6 +53,7 @@ function ProductsPage() {
   const [uploading, setUploading] = useState(false);
   const productList = useSelector((state) => state.productList);
   const { products, error } = productList;
+  const toast = useToast();
 
   const productSave = useSelector((state) => state.productSave);
   const {
@@ -87,7 +89,13 @@ function ProductsPage() {
     onOpen();
   };
   const submitHandler = (e) => {
-    alert();
+    toast({
+      title: "Success!🚀",
+      description: "Your product has been created!",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
     e.preventDefault();
     dispatch(
       saveProduct({
