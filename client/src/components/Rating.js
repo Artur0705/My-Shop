@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegStar, FaStarHalf, FaStar } from "react-icons/fa";
 
 export default function Rating(props) {
   return !props.value ? (
@@ -6,59 +7,49 @@ export default function Rating(props) {
   ) : (
     <div className="rating">
       <span>
-        <i
-          className={
-            props.value >= 1
-              ? "fa fa-star"
-              : props.value >= 0.5
-              ? "fa fa-star-half-o"
-              : "fa fa-star-o"
-          }
-        ></i>
+        {props.value >= 1 ? (
+          <FaStar />
+        ) : props.value >= 0.5 ? (
+          <FaStarHalf />
+        ) : (
+          <FaRegStar />
+        )}
       </span>
       <span>
-        <i
-          className={
-            props.value >= 2
-              ? "fa fa-star"
-              : props.value >= 1.5
-              ? "fa fa-star-half-o"
-              : "fa fa-star-o"
-          }
-        ></i>
+        {props.value >= 2 ? (
+          <FaStar />
+        ) : props.value >= 1.5 ? (
+          <FaStarHalf />
+        ) : (
+          <FaRegStar />
+        )}
       </span>
       <span>
-        <i
-          className={
-            props.value >= 3
-              ? "fa fa-star"
-              : props.value >= 2.5
-              ? "fa fa-star-half-o"
-              : "fa fa-star-o"
-          }
-        ></i>
+        {props.value >= 3 ? (
+          <FaStar />
+        ) : props.value >= 2.5 ? (
+          <FaStarHalf />
+        ) : (
+          <FaRegStar />
+        )}
       </span>
       <span>
-        <i
-          className={
-            props.value >= 4
-              ? "fa fa-star"
-              : props.value >= 3.5
-              ? "fa fa-star-half-o"
-              : "fa fa-star-o"
-          }
-        ></i>
+        {props.value >= 4 ? (
+          <FaStar />
+        ) : props.value >= 3.5 ? (
+          <FaStarHalf />
+        ) : (
+          <FaRegStar />
+        )}
       </span>
       <span>
-        <i
-          className={
-            props.value >= 5
-              ? "fa fa-star"
-              : props.value >= 4.5
-              ? "fa fa-star-half-o"
-              : "fa fa-star-o"
-          }
-        ></i>
+        {props.value >= 5 ? (
+          <FaStar />
+        ) : props.value >= 4.5 ? (
+          <FaStarHalf />
+        ) : (
+          <FaRegStar />
+        )}
       </span>
       <span>{props.text ? props.text : ""}</span>
     </div>

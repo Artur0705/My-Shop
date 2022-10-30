@@ -46,6 +46,10 @@ ul.review {
 }
 
 /* Rating */
+.rating {
+  display: flex;
+}
+
 .rating span {
   font-size: 1.8rem;
   margin: 0.1rem;
