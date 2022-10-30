@@ -19,7 +19,6 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import ContactUs from "../components/ContactUs";
 
 function ProfilePage(props) {
   const [name, setName] = useState("");

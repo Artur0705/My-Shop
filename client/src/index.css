@@ -6,6 +6,57 @@ body {
   height: 100vh;
   margin: 0;
 }
+.form {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+input {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+}
+
+ul.review {
+  list-style-type: none;
+  padding: 0;
+}
+.review li {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+.review li > div {
+  margin: 0.5rem;
+}
+
+/* Rating */
+.rating span {
+  font-size: 1.8rem;
+  margin: 0.1rem;
+}
+.rating span:last-child {
+  color: #444444;
+  font-size: 1.4rem;
+}
+a > .rating > span:last-child {
+  color: #0000ff;
+}
 
 .full-width {
   width: 100%;
