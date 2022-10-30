@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import { Button, Container, Flex, Input, Select } from "@chakra-ui/react";
 import Hero from "../components/Hero";
+import Testimonials from "../components/Testimonials";
+import AboutUs from "../components/AboutUs";
 
 function HomePage() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -68,7 +70,6 @@ function HomePage() {
         <ul className="products">
           <Flex
             alignItems="center"
-            // justifyContent="space-between"
             w="full"
             gridGap={10}
             py="16"
@@ -97,6 +98,8 @@ function HomePage() {
           </Flex>
         </ul>
       )}
+      <AboutUs />
+      <Testimonials />
     </>
   );
 }
