@@ -27,7 +27,7 @@
 
 ## Usage
 
-- Once everything has been installed run `npm run develoop` in the root folder.
+- Once everything has been installed run `npm run develop` in the root folder.
 - The application will start and you can sign up and explore through the website.
 - `NOTE: In order to see full functioanality you need to use your own env`
 - To create users run `npm run seed` in root folder.
