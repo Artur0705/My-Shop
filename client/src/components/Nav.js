@@ -43,11 +43,12 @@ const Nav = ({ onOpen, ind, userInfo }) => {
       <Text fontSize="xl" fontWeight="bold">
         <Link href="/">ShoesOn</Link>
       </Text>
-
-      <Link href="/category/running_shoes">Running shoes</Link>
-      <Link href="/category/sneakers">Sneakers</Link>
-      <Link href="/category/classic">Classic</Link>
-      <Link href="/category/work_boots">Work boots</Link>
+      <div className="category-names">
+        <Link href="/category/running_shoes">Running shoes</Link>
+        <Link href="/category/sneakers">Sneakers</Link>
+        <Link href="/category/classic">Classic</Link>
+        <Link href="/category/work_boots">Work boots</Link>
+      </div>
 
       <Flex alignItems="center">
         <IconButton mr="10" w={6} h={6} p={5} onClick={toggleColorMode}>

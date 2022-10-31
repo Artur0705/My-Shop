@@ -30,6 +30,9 @@
 - Once everything has been installed run `npm run develoop` in the root folder.
 - The application will start and you can sign up and explore through the website.
 - `NOTE: In order to see full functioanality you need to use your own env`
+- To create users run `npm run seed` in root folder.
+- Then you can login as `admin` and create products.
+- You can upload images from your local machine or using a web image link.
 
 ## License
 

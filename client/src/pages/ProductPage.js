@@ -100,7 +100,7 @@ function ProductPage(props) {
               flexDirection="column"
               ml={isLargerThanLG ? "7" : "0"}
             >
-              <Text fontSize={isLargerThanLG ? "5xl" : "4xl"} fontWeight="bold">
+              <Text fontSize={isLargerThanLG ? "2xl" : "1xl"} fontWeight="bold">
                 {product.name}
               </Text>
 

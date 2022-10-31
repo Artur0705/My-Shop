@@ -33,6 +33,11 @@ const DrawerComponent = ({ isOpen, onClose, btnRef }) => {
             <Link href="/profile" fontSize="md" mr="10">
               Profile
             </Link>
+            <Link href="/category/running_shoes">Running shoes</Link>
+            <Link href="/category/sneakers">Sneakers</Link>
+            <Link href="/category/classic">Classic</Link>
+            <Link href="/category/work_boots">Work boots</Link>
+
             {userInfo && userInfo.isAdmin && (
               <>
                 <Link href="/products" fontSize="md" mr="10">

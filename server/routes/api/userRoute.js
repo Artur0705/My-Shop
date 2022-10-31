@@ -109,9 +109,9 @@ const sendEmail = (from, text, name) => {
 router.get("/createadmin", async (req, res) => {
   try {
     const user = new User({
-      name: "admin",
+      name: "Admin",
       email: "admin@gmail.com",
-      password: "$2b$10$HCwGpaaw.GsUzDX1seZYmuKAVbDJKsvlHJrg6t2cO9Ul/kJoYALra", // password=123
+      password: "$2b$10$S4b0xYKnAlR5KMuDTx/8A.jPYxxvm6zRKMCwmqD.V7xmAmmUNJW3i", // admin
       isAdmin: true,
     });
     const newUser = await user.save();
