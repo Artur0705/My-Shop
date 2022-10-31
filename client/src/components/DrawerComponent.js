@@ -30,21 +30,26 @@ const DrawerComponent = ({ isOpen, onClose, btnRef }) => {
 
         <DrawerBody>
           <Flex flexDirection="column">
-            <Link href="/profile" fontSize="md" mr="10">
-              Profile
-            </Link>
-            <Link href="/category/running_shoes">Running shoes</Link>
-            <Link href="/category/sneakers">Sneakers</Link>
-            <Link href="/category/classic">Classic</Link>
-            <Link href="/category/work_boots">Work boots</Link>
-
-            {userInfo && userInfo.isAdmin && (
+            {userInfo ? (
               <>
-                <Link href="/products" fontSize="md" mr="10">
-                  Products
+                <Link href="/profile" fontSize="md" mr="10">
+                  Profile
                 </Link>
-                <Link href="/orders" fontSize="md" mr="10">
-                  Orders
+                {userInfo && userInfo.isAdmin && (
+                  <>
+                    <Link href="/products" fontSize="md" mr="10">
+                      Products
+                    </Link>
+                    <Link href="/orders" fontSize="md" mr="10">
+                      Orders
+                    </Link>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <Link href="/login" fontSize="md" mr="10">
+                  Login
                 </Link>
               </>
             )}
