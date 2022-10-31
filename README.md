@@ -33,6 +33,12 @@
 - To create users run `npm run seed` in root folder.
 - Then you can login as `admin` and create products.
 - You can upload images from your local machine or using a web image link.
+- `Admin` user has been already created in deployed version.
+- To test `admin` user functionality on `Heroku` you can use `username` - `admin@gmail.com` , `password` - `password`.
+- To test `admin` user locally follow the [Installation](#installation) then run `npm run seed` to create `admin` user along with other test users.
+- You can find the `admin` `username` and `password` inside the `seeds.js` file. or simply put this url into your browser `http://localhost:5000/api/users/createadmin`
+- `NOTE: In order to test admin image upload functionality with cloned repo you can either upload from your local machine or use image web url`
+- `NOTE: In order to test admin image upload functionality on Heroku you only can use image web url`
 
 ## License
 
